@@ -34,6 +34,13 @@ public class MenuManager : MonoBehaviourPunCallbacks
         UserNameScreen.SetActive(true);
     }
 
+    public override void OnJoinedRoom() {
+        //play game scene
+        PhotonNetwork.LoadLevel(1);
+    
+    
+    }
+
     #region UIMethods
     public void OnClick_CreateNameBtn() {
 
@@ -54,6 +61,21 @@ public class MenuManager : MonoBehaviourPunCallbacks
     
          
     }
+
+    public void Onclick_JoinRoom() {
+        RoomOptions ro = new RoomOptions();
+        ro.MaxPlayers = 4;
+        PhotonNetwork.JoinOrCreateRoom(JoinRoomInput.text, ro, TypedLobby.Default);
+    
+    }
+
+    public void Onclick_CreateRoom() {
+        PhotonNetwork.CreateRoom(CreateRoomInput.text, new RoomOptions { MaxPlayers = 4});
+
+        
+    
+    }
+
     #endregion
 
 
