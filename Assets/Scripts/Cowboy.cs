@@ -9,6 +9,7 @@ public class Cowboy : MonoBehaviourPun
     public float MoveSpeed =5;
     public GameObject playerCam;
     public SpriteRenderer sprite;
+    public Animator anim;
     // Start is called before the first frame update
     void Awake()
     {
@@ -35,9 +36,16 @@ public class Cowboy : MonoBehaviourPun
         transform.position += movement * MoveSpeed * Time.deltaTime;
         if (Input.GetAxisRaw("Horizontal") == -1) {
             sprite.flipX = true;
-        }
+            anim.SetBool("IsMove", true);
+        } 
         else if (Input.GetAxisRaw("Horizontal") == 1) {
-            sprite.flipX = false;        
+            sprite.flipX = false;
+            anim.SetBool("IsMove", true);
+
+        }
+        else{
+            anim.SetBool("IsMove", false);
+
         }
     }
 }

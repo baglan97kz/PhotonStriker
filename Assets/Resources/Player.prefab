@@ -100,6 +100,7 @@ MonoBehaviour:
   MoveSpeed: 5
   playerCam: {fileID: 8550454139904162711}
   sprite: {fileID: 8550454139878043342}
+  anim: {fileID: 8550454139878043341}
 --- !u!114 &9011249135369733479
 MonoBehaviour:
   m_ObjectHideFlags: 0
