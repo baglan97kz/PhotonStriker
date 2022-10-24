@@ -14,7 +14,7 @@ public class Cowboy : MonoBehaviourPun
     private bool AllowMoving = true;
 
     public GameObject BulletePrefab;
-    public Transform BulleteSpawnPoint;
+    public Transform BulleteSpawnPoint1, BulleteSpawnPoint2;
     // Start is called before the first frame update
     void Awake()
     {
@@ -70,7 +70,20 @@ public class Cowboy : MonoBehaviourPun
     }
 
     private void shot() {
-        GameObject bullete = PhotonNetwork.Instantiate(BulletePrefab.name, new Vector2(BulleteSpawnPoint.position.x, BulleteSpawnPoint.position.y),Quaternion.identity, 0);
+
+        if (sprite.flipX)
+        {
+            GameObject bullete = PhotonNetwork.Instantiate(BulletePrefab.name, new Vector2(BulleteSpawnPoint2.position.x, BulleteSpawnPoint2.position.y), Quaternion.identity, 0);
+            bullete.GetComponent<PhotonView>().RPC("ChangeDirection", RpcTarget.AllBuffered, sprite.flipX);
+
+        }
+        else {
+            GameObject bullete = PhotonNetwork.Instantiate(BulletePrefab.name, new Vector2(BulleteSpawnPoint1.position.x, BulleteSpawnPoint1.position.y), Quaternion.identity, 0);
+            bullete.GetComponent<PhotonView>().RPC("ChangeDirection", RpcTarget.AllBuffered, sprite.flipX);
+        }
+
+
+        
         anim.SetBool("IsShot", true);
         AllowMoving = false;
     

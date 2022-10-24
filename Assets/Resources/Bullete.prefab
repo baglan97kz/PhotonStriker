@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d0956871daece94094580fb09e40e07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MovingDir: 0
   MoveSpeed: 8
   DestroyTime: 2
 --- !u!114 &8333133659972889958
@@ -146,6 +147,6 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 2
+  sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
