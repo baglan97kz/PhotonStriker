@@ -3,14 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
+
 public class GameManager : MonoBehaviour
 {
     public GameObject playerPrefab;
     public GameObject canvas;
     public GameObject sceneCam;
+
+    public TMPro.TMP_Text pingrate;
     private void Awake()
     {
         canvas.SetActive(true);
+    }
+    private void Update()
+    {
+        pingrate.text = "NetworkPing : " + PhotonNetwork.GetPing();
     }
 
     public void SpawnPlayer() {

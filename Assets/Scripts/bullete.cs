@@ -8,6 +8,7 @@ public class Bullete : MonoBehaviourPun
     public bool MovingDir;
     public float MoveSpeed = 8;
     public float DestroyTime = 2f;
+    public float bulleteDamage = 0.3f;
 
     IEnumerator destroyBullete() { 
         yield return new WaitForSeconds(DestroyTime);
@@ -51,6 +52,10 @@ public class Bullete : MonoBehaviourPun
 
         PhotonView target = collision.gameObject.GetComponent<PhotonView>();
         if (target != null && (!target.IsMine || target.IsRoomView)) {
+            if (target.tag == "Player") {
+                target.RPC("HealthUpdate", RpcTarget.AllBuffered, bulleteDamage);
+            }
+
             this.GetComponent<PhotonView>().RPC("Destroy", RpcTarget.AllBuffered);
             
         

@@ -52,10 +52,10 @@ public class Cowboy : MonoBehaviourPun
             var movement = new Vector3(Input.GetAxisRaw("Horizontal"), 0);
             transform.position += movement * MoveSpeed * Time.deltaTime;
         }
-        if (Input.GetKeyDown(KeyCode.RightControl) && anim.GetBool("IsMove") == false) {
+        if (Input.GetKeyDown(KeyCode.Mouse0) && anim.GetBool("IsMove") == false) {
             shot();
         }
-        else if (Input.GetKeyUp(KeyCode.RightControl)) {
+        else if (Input.GetKeyUp(KeyCode.Mouse0)) {
             anim.SetBool("IsShot", false);
             AllowMoving = true;
         
