@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using System;
+using TMPro;
 
 public class Cowboy : MonoBehaviourPun
 {
@@ -15,13 +16,22 @@ public class Cowboy : MonoBehaviourPun
 
     public GameObject BulletePrefab;
     public Transform BulleteSpawnPoint1, BulleteSpawnPoint2;
+
+    public TMP_Text playerName;
     // Start is called before the first frame update
     void Awake()
     {
         if (photonView.IsMine)
         {
             playerCam.SetActive(true);
+            playerName.text = "You : "+PhotonNetwork.NickName;
+            playerName.color = Color.green;
         }
+        else {
+            playerName.text = photonview.Owner.NickName;
+            playerName.color = Color.red;
+        }
+        
         
     }
 
