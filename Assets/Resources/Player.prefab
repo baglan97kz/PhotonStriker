@@ -460,6 +460,7 @@ MonoBehaviour:
   BulleteSpawnPoint1: {fileID: 7103129567523376373}
   BulleteSpawnPoint2: {fileID: 8851270514843558891}
   playerName: {fileID: 4180715459027224032}
+  DisableInputs: 0
 --- !u!114 &9011249135369733479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -529,6 +530,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fillImage: {fileID: 7226206433226517934}
+  health: 1
+  rb: {fileID: 8550454139319960535}
+  sr: {fileID: 8550454139878043342}
+  collider: {fileID: 8550454139319960533}
+  playerCanvas: {fileID: 9043153984119107824}
+  playerScript: {fileID: 7475519343925653133}
 --- !u!1 &8550454139878043379
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,9 +13,14 @@ public class Health : MonoBehaviourPun
     public Rigidbody2D rb;
     public SpriteRenderer sr;
     public BoxCollider2D collider;
+    public GameObject playerCanvas;
+
+    public Cowboy playerScript;
 
     public void CheckHealth() {
         if (photonView.IsMine && health <= 0) {
+            GameManager.instance.EnableRespawn();
+            playerScript.DisableInputs = true;
             this.GetComponent<PhotonView>().RPC("death",RpcTarget.AllBuffered);
         }
     }
@@ -25,7 +30,14 @@ public class Health : MonoBehaviourPun
         rb.gravityScale = 0;
         collider.enabled = false;
         sr.enabled = false;
+        playerCanvas.SetActive(false);
     
+    }
+
+    public void EnableInputs()
+    {
+        playerScript.DisableInputs = false;
+
     }
 
     [PunRPC]
@@ -33,10 +45,14 @@ public class Health : MonoBehaviourPun
         rb.gravityScale = 1;
         collider.enabled = true;
         sr.enabled = true;
-    
+        playerCanvas.SetActive(true);
+
+        fillImage.fillAmount = 1;
+        health = 1;
+
     }
 
-    [PunRPC]
+    [PunRPC] 
     public void HealthUpdate(float damage) {
         fillImage.fillAmount -= damage;
         health = fillImage.fillAmount;

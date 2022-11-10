@@ -18,11 +18,14 @@ public class Cowboy : MonoBehaviourPun
     public Transform BulleteSpawnPoint1, BulleteSpawnPoint2;
 
     public TMP_Text playerName;
+
+    public bool DisableInputs = false;
     // Start is called before the first frame update
     void Awake()
     {
         if (photonView.IsMine)
         {
+            GameManager.instance.LocalPlayer = this.gameObject;
             playerCam.SetActive(true);
             playerName.text = "You : "+PhotonNetwork.NickName;
             playerName.color = Color.green;
@@ -38,7 +41,7 @@ public class Cowboy : MonoBehaviourPun
     // Update is called once per frame
     void Update()
     {
-        if (photonView.IsMine) {
+        if (photonView.IsMine && !DisableInputs) {
             checkInputs();
         
         }
