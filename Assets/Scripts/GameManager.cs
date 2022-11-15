@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-
+using Unity.VisualScripting;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public GameObject LocalPlayer;
     public static GameManager instance = null;
+
+    public GameObject LeaveScreen;
     private void Awake()
     {
         instance = this;
@@ -27,6 +29,9 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            ToggleLeaveScreen();
+        }
         if (startRespawn) {
             StartRespawn();
         
@@ -44,6 +49,24 @@ public class GameManager : MonoBehaviour
             LocalPlayer.GetComponent<Health>().EnableInputs();
             LocalPlayer.GetComponent<PhotonView>().RPC("Revive",RpcTarget.AllBuffered);
 }
+    }
+
+    public void ToggleLeaveScreen() {
+        if (LeaveScreen.activeSelf)
+        {
+            LeaveScreen.SetActive(false);
+        }
+        else { 
+            LeaveScreen.SetActive(true);    
+        }
+
+    
+    }
+
+    public void LeaveRoom() {
+        PhotonNetwork.LeaveRoom();
+        PhotonNetwork.LoadLevel(0);
+    
     }
 
     public void PlayerRelocation() {
