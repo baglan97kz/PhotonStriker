@@ -21,6 +21,7 @@ public class Health : MonoBehaviourPun
         if (photonView.IsMine && health <= 0) {
             GameManager.instance.EnableRespawn();
             playerScript.DisableInputs = true;
+            
             this.GetComponent<PhotonView>().RPC("death",RpcTarget.AllBuffered);
         }
     }
@@ -37,6 +38,7 @@ public class Health : MonoBehaviourPun
     public void EnableInputs()
     {
         playerScript.DisableInputs = false;
+        
 
     }
 

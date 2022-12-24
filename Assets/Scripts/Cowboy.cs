@@ -107,12 +107,14 @@ public class Cowboy : MonoBehaviourPun
     [PunRPC]
     private void FlipSprite_Right() { 
          sprite.flipX = false;
-
+         sprite.transform.localPosition = new Vector2(0, sprite.transform.localPosition.y);
+        
     }
     [PunRPC]
     private void FlipSprite_Left()
     {
         sprite.flipX = true;
+        sprite.transform.localPosition = new Vector2( -0.85f, sprite.transform.localPosition.y);
 
     }
 }

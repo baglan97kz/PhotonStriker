@@ -31,7 +31,8 @@ public class MenuManager : MonoBehaviourPunCallbacks
     public override void OnJoinedLobby()
     {
         Debug.Log("Connected to Lobby!!!!");
-        UserNameScreen.SetActive(true);
+        // UserNameScreen.SetActive(true);
+        OnClick_CreateNameBtn(); // Uakitsha. Zhogaridagimen ausityramiz
     }
 
     public override void OnJoinedRoom() {
@@ -44,7 +45,7 @@ public class MenuManager : MonoBehaviourPunCallbacks
     #region UIMethods
     public void OnClick_CreateNameBtn() {
 
-        PhotonNetwork.NickName = UserNameInput.text;
+        PhotonNetwork.NickName = "Player" + Random.RandomRange(1,100).ToString() ; //UserNameInput.text;
         UserNameScreen.SetActive(false);
         ConnectScreen.SetActive(true);
     
@@ -53,11 +54,13 @@ public class MenuManager : MonoBehaviourPunCallbacks
     public void OnNameField_Changed() {
         if (UserNameInput.text.Length >= 2)
         {
-            CreateUserNameButton.SetActive(true);
+          //  CreateUserNameButton.SetActive(true);
         }
         else {
-            CreateUserNameButton.SetActive(false);
+           // CreateUserNameButton.SetActive(false);
         }
+
+        //Kein kosamin
     
          
     }
@@ -65,12 +68,12 @@ public class MenuManager : MonoBehaviourPunCallbacks
     public void Onclick_JoinRoom() {
         RoomOptions ro = new RoomOptions();
         ro.MaxPlayers = 4;
-        PhotonNetwork.JoinOrCreateRoom(JoinRoomInput.text, ro, TypedLobby.Default);
+        PhotonNetwork.JoinOrCreateRoom( "dala" /*JoinRoomInput.text*/, ro, TypedLobby.Default);
     
     }
 
     public void Onclick_CreateRoom() {
-        PhotonNetwork.CreateRoom(CreateRoomInput.text, new RoomOptions { MaxPlayers = 4});
+        PhotonNetwork.CreateRoom("dala" /*CreateRoomInput.text*/, new RoomOptions { MaxPlayers = 4});
 
         
     
