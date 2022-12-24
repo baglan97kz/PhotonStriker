@@ -679,6 +679,8 @@ GameObject:
   - component: {fileID: 8274897897680586167}
   - component: {fileID: 1742710725205738666}
   - component: {fileID: 1269356357}
+  - component: {fileID: 433681587}
+  - component: {fileID: 433681586}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -747,7 +749,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -774,7 +776,9 @@ MonoBehaviour:
   BulleteSpawnPoint1: {fileID: 7103129567523376373}
   BulleteSpawnPoint2: {fileID: 8851270514843558891}
   playerName: {fileID: 4180715459027224032}
+  IsGrounded: 0
   DisableInputs: 0
+  jumpForce: 60000
 --- !u!114 &9011249135369733479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -792,7 +796,7 @@ MonoBehaviour:
   prefixField: -1
   Synchronization: 3
   OwnershipTransfer: 0
-  observableSearch: 2
+  observableSearch: 0
   ObservedComponents:
   - {fileID: 8274897897680586167}
   - {fileID: 1269356357}
@@ -867,6 +871,45 @@ MonoBehaviour:
   BubbleSpeech: {fileID: 1969737848}
   ChatText: {fileID: 1358066326}
   player: {fileID: 7475519343925653133}
+--- !u!114 &433681587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8550454139319960532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e7cb724808c322458aa4d15f5035fa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 0
+  m_TeleportEnabled: 0
+  m_TeleportIfDistanceGreaterThan: 3
+--- !u!114 &433681586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8550454139319960532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 2
+  OwnershipTransfer: 0
+  observableSearch: 0
+  ObservedComponents:
+  - {fileID: 433681587}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &8550454139878043379
 GameObject:
   m_ObjectHideFlags: 0

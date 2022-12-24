@@ -18,9 +18,11 @@ public class Cowboy : MonoBehaviourPun
     public Transform BulleteSpawnPoint1, BulleteSpawnPoint2;
 
     public TMP_Text playerName;
-
+    public bool IsGrounded = false;
     public bool DisableInputs = false;
     // Start is called before the first frame update
+    private Rigidbody2D rb;
+    public float jumpForce = 2;
     void Awake()
     {
         if (photonView.IsMine)
@@ -37,6 +39,11 @@ public class Cowboy : MonoBehaviourPun
         }
         
         
+    }
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -63,6 +70,10 @@ public class Cowboy : MonoBehaviourPun
             anim.SetBool("IsShot", false);
             AllowMoving = true;
         
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded) {
+            Jump();
         }
 
 
@@ -116,5 +127,27 @@ public class Cowboy : MonoBehaviourPun
         sprite.flipX = true;
         sprite.transform.localPosition = new Vector2( -0.85f, sprite.transform.localPosition.y);
 
+    }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "Ground") {
+            IsGrounded = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "Ground")
+        {
+            IsGrounded = false;
+        }
+    }
+
+    void Jump() {
+        rb.AddForce(new Vector2(0, jumpForce*Time.deltaTime));
+        Debug.Log("Jumped");
+    
+    
     }
 }

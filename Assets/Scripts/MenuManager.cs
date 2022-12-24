@@ -45,7 +45,7 @@ public class MenuManager : MonoBehaviourPunCallbacks
     #region UIMethods
     public void OnClick_CreateNameBtn() {
 
-        PhotonNetwork.NickName = "Player" + Random.RandomRange(1,100).ToString() ; //UserNameInput.text;
+        PhotonNetwork.NickName = "Player" + Random.Range(1,100).ToString() ; //UserNameInput.text;
         UserNameScreen.SetActive(false);
         ConnectScreen.SetActive(true);
     
