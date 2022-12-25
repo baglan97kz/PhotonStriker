@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-using Unity.VisualScripting;
-using System.Threading;
+using Photon.Realtime;
+using TMPro;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviourPunCallbacks
 {
     public GameObject playerPrefab;
     public GameObject canvas;
@@ -25,6 +25,9 @@ public class GameManager : MonoBehaviour
     public GameObject LeaveScreen;
 
     public TimeOut timeOut_obj;
+
+    public GameObject feedbox;
+    public GameObject feedText_prefab;
     private void Awake()
     {
         instance = this;
@@ -65,6 +68,24 @@ public class GameManager : MonoBehaviour
 
     
     }
+    public override void OnPlayerEnteredRoom(Player newPlayer)
+    {
+        GameObject tempObj =  Instantiate(feedText_prefab, new Vector2(0f,0f), Quaternion.identity);
+        tempObj.transform.SetParent(feedbox.transform);
+        tempObj.transform.localScale = Vector3.one;
+        tempObj.GetComponent<TMP_Text>().text = newPlayer.NickName + " has joined the game";
+        Destroy(tempObj,3);
+    }
+
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        GameObject tempObj = Instantiate(feedText_prefab, new Vector2(0f, 0f), Quaternion.identity);
+        tempObj.transform.SetParent(feedbox.transform);
+        tempObj.transform.localScale = Vector3.one;
+        tempObj.GetComponent<TMP_Text>().text = otherPlayer.NickName + " has left the game";
+        Destroy(tempObj, 3);
+    }
+
 
     public void LeaveRoom() {
         PhotonNetwork.LeaveRoom();
