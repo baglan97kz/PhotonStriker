@@ -129,6 +129,8 @@ MonoBehaviour:
   MoveSpeed: 8
   DestroyTime: 2
   bulleteDamage: 0.3
+  killerName: 
+  localPlayerObj: {fileID: 0}
 --- !u!114 &8333133659972889958
 MonoBehaviour:
   m_ObjectHideFlags: 0

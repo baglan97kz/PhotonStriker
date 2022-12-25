@@ -23,6 +23,8 @@ public class Cowboy : MonoBehaviourPun
     // Start is called before the first frame update
     private Rigidbody2D rb;
     public float jumpForce = 2;
+
+    public string MyName;
     void Awake()
     {
         if (photonView.IsMine)
@@ -32,10 +34,12 @@ public class Cowboy : MonoBehaviourPun
             playerCam.transform.SetParent(null, false);
             playerName.text = "You : "+PhotonNetwork.NickName;
             playerName.color = Color.green;
+            MyName = PhotonNetwork.NickName;
         }
         else {
             playerName.text = photonview.Owner.NickName;
             playerName.color = Color.red;
+            
         }
         
         
@@ -100,11 +104,13 @@ public class Cowboy : MonoBehaviourPun
         {
             GameObject bullete = PhotonNetwork.Instantiate(BulletePrefab.name, new Vector2(BulleteSpawnPoint2.position.x, BulleteSpawnPoint2.position.y), Quaternion.identity, 0);
             bullete.GetComponent<PhotonView>().RPC("ChangeDirection", RpcTarget.AllBuffered, sprite.flipX);
+            bullete.GetComponent<Bullete>().localPlayerObj = this.gameObject;
 
         }
         else {
             GameObject bullete = PhotonNetwork.Instantiate(BulletePrefab.name, new Vector2(BulleteSpawnPoint1.position.x, BulleteSpawnPoint1.position.y), Quaternion.identity, 0);
             bullete.GetComponent<PhotonView>().RPC("ChangeDirection", RpcTarget.AllBuffered, sprite.flipX);
+            bullete.GetComponent<Bullete>().localPlayerObj = this.gameObject;
         }
 
 

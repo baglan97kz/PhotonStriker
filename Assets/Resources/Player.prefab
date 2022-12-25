@@ -779,6 +779,7 @@ MonoBehaviour:
   IsGrounded: 0
   DisableInputs: 0
   jumpForce: 60000
+  MyName: 
 --- !u!114 &9011249135369733479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -856,6 +857,7 @@ MonoBehaviour:
   collider: {fileID: 8550454139319960533}
   playerCanvas: {fileID: 9043153984119107824}
   playerScript: {fileID: 7475519343925653133}
+  KillGotKilledText: {fileID: 8467288274644245200, guid: 143c1d6abc2457f4c94f0e7a39d4dc33, type: 3}
 --- !u!114 &1269356357
 MonoBehaviour:
   m_ObjectHideFlags: 0

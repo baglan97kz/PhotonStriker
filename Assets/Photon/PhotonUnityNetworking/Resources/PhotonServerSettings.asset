@@ -47,6 +47,8 @@ MonoBehaviour:
   - death
   - Revive
   - SendMsg
+  - YouGotKilledBy
+  - YouKilled
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
