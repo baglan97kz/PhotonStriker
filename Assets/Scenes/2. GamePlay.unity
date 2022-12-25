@@ -804,6 +804,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1636950071694025412, guid: b98a8a547ece2c94c98670e7d81a5144, type: 3}
+      propertyPath: sceneViewId
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8550454139319960532, guid: b98a8a547ece2c94c98670e7d81a5144, type: 3}
       propertyPath: m_Name
       value: Player
@@ -855,6 +859,10 @@ PrefabInstance:
     - target: {fileID: 8550454139319960534, guid: b98a8a547ece2c94c98670e7d81a5144, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9011249135369733479, guid: b98a8a547ece2c94c98670e7d81a5144, type: 3}
+      propertyPath: sceneViewId
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b98a8a547ece2c94c98670e7d81a5144, type: 3}
@@ -1208,6 +1216,7 @@ MonoBehaviour:
   pingrate: {fileID: 112291705}
   LocalPlayer: {fileID: 0}
   LeaveScreen: {fileID: 944662995}
+  timeOut_obj: {fileID: 325713529}
 --- !u!4 &1021578732
 Transform:
   m_ObjectHideFlags: 0

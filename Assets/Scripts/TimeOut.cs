@@ -6,7 +6,7 @@ using TMPro;
 
 public class TimeOut : MonoBehaviourPun
 {
-    private float idleTime = 10f;
+    private float idleTime = 30f;
     private float timer = 10;
 
     public GameObject TimeOutUI;
@@ -20,11 +20,11 @@ public class TimeOut : MonoBehaviourPun
 
        
         
-            if (!TimeOver)
+            if (!TimeOver )
             {
-                if (Input.anyKey)
+                if (Input.anyKey || GameManager.instance.respawnUI.activeSelf)
                 {
-                    idleTime = 10;
+                    idleTime = 30;
                 }
                 idleTime -= Time.deltaTime;
 
@@ -33,7 +33,7 @@ public class TimeOut : MonoBehaviourPun
                     playerNotMoving();
                 }
 
-                if (TimeOutUI.activeSelf)
+                if (TimeOutUI.activeSelf )
                 {
                     timer -= Time.deltaTime;
                     TimeOutUI_Text.text = "Disconnecting in: " + timer.ToString("F0");
@@ -42,10 +42,10 @@ public class TimeOut : MonoBehaviourPun
                     {
                         TimeOver = true;
                     }
-                    else if (timer > 0 && Input.anyKey)
+                    else if ((timer > 0 && Input.anyKey) || GameManager.instance.respawnUI.activeSelf)
                     {
-                        idleTime = 10;
-                        timer = 5;
+                        idleTime = 30;
+                        timer = 10;
                         TimeOutUI.SetActive(false);
 
                     }

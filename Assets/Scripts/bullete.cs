@@ -54,6 +54,7 @@ public class Bullete : MonoBehaviourPun
         if (target != null && (!target.IsMine || target.IsRoomView)) {
             if (target.tag == "Player") {
                 target.RPC("HealthUpdate", RpcTarget.AllBuffered, bulleteDamage);
+                target.GetComponent<HurtEffect>().GotHit();
             }
 
             this.GetComponent<PhotonView>().RPC("Destroy", RpcTarget.AllBuffered);

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Unity.VisualScripting;
+using System.Threading;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;
 
     public GameObject LeaveScreen;
+
+    public TimeOut timeOut_obj;
     private void Awake()
     {
         instance = this;
@@ -79,7 +82,8 @@ public class GameManager : MonoBehaviour
 
         TimeAmount = 5;
         startRespawn = true;
-        respawnUI.SetActive(true);
+        if(!timeOut_obj.TimeOutUI.activeSelf)
+            respawnUI.SetActive(true);
     }
 
     public void SpawnPlayer() {
