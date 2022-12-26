@@ -84,6 +84,7 @@ public class Cowboy : MonoBehaviourPun
         if (Input.GetAxisRaw("Horizontal") == -1 && anim.GetBool("IsShot") == false) {
             photonView.RPC("FlipSprite_Left", RpcTarget.AllBuffered);
             
+            
             anim.SetBool("IsMove", true);
         } 
         else if (Input.GetAxisRaw("Horizontal") == 1 && anim.GetBool("IsShot") == false) {

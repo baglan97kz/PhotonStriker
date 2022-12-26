@@ -12,6 +12,9 @@ public class CameraFollow2D : MonoBehaviour {
 
     private float margin = 0.1f;
 
+    public Vector2 MinBoundary;
+    public Vector2 MaxBoundary;
+
     void Start()
     {
         if (m_Target == null)
@@ -34,6 +37,9 @@ public class CameraFollow2D : MonoBehaviour {
                 targetY = Mathf.Lerp(transform.position.y, targetY, m_DampTime * Time.deltaTime);
 
             transform.position = new Vector3(targetX, targetY, transform.position.z);
+
+            transform.position = new Vector3(Mathf.Clamp(transform.position.x, MinBoundary.x, MaxBoundary.x),
+                Mathf.Clamp(transform.position.y, MinBoundary.y, MaxBoundary.y), transform.position.z); 
         }
     }
 }

@@ -101,6 +101,8 @@ MonoBehaviour:
   m_Target: {fileID: 8550454139319960534}
   m_XOffset: 0
   m_YOffset: 3
+  MinBoundary: {x: -47, y: -10}
+  MaxBoundary: {x: 47, y: 15}
 --- !u!1 &1358066324
 GameObject:
   m_ObjectHideFlags: 0
