@@ -49,6 +49,7 @@ MonoBehaviour:
   - SendMsg
   - YouGotKilledBy
   - YouKilled
+  - UpdatePlayerList
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

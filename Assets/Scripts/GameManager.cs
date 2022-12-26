@@ -7,6 +7,9 @@ using TMPro;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
+    public GameObject cpCanvas;
+    public ConnectedPlayer cp;
+
     public GameObject playerPrefab;
     public GameObject canvas;
     public GameObject sceneCam;
@@ -36,6 +39,12 @@ public class GameManager : MonoBehaviourPunCallbacks
         instance = this;
         canvas.SetActive(true);
     }
+
+    private void Start()
+    {
+        cp.AddLocalPlayer();
+        cp.GetComponent<PhotonView>().RPC("UpdatePlayerList", RpcTarget.OthersBuffered, PhotonNetwork.NickName) ;
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) {
@@ -45,6 +54,14 @@ public class GameManager : MonoBehaviourPunCallbacks
             StartRespawn();
         
         }
+        if (Input.GetKey(KeyCode.Tab))
+        {
+            cpCanvas.SetActive(true);
+        }
+        else {
+            cpCanvas.SetActive(false);
+        }
+
         pingrate.text = "NetworkPing : " + PhotonNetwork.GetPing();
     }
 
@@ -82,6 +99,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
+        cp.RemovePLayerList(otherPlayer.NickName);
         GameObject tempObj = Instantiate(feedText_prefab, new Vector2(0f, 0f), Quaternion.identity);
         tempObj.transform.SetParent(feedbox.transform);
         tempObj.transform.localScale = Vector3.one;
