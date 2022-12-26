@@ -20,6 +20,8 @@ public class Bullete : MonoBehaviourPun
         {
             killerName = localPlayerObj.GetComponent<Cowboy>().MyName;
         }
+
+        Destroy(this.gameObject, 4);
     }
 
     IEnumerator destroyBullete() { 
